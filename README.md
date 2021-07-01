@@ -1,1 +1,1 @@
-# google-work-sample
+# Google's Coding Challenge
