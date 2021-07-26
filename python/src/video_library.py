@@ -17,6 +17,7 @@ class VideoLibrary:
     def __init__(self):
         """The VideoLibrary class is initialized."""
         self._videos = {}
+        self._flagged = {}
         with open(Path(__file__).parent / "videos.txt") as video_file:
             reader = _csv_reader_with_strip(
                 csv.reader(video_file, delimiter="|"))
@@ -43,3 +44,16 @@ class VideoLibrary:
             does not exist.
         """
         return self._videos.get(video_id, None)
+
+    @property
+    def flagged(self) -> dict:
+        """Returns a dictionary of flagged video_ids"""
+        return self._flagged
+
+    def flag_video(self, video_id, reason=""):
+        """Add flagged status to video_id with optional reason"""
+        self._flagged[video_id] = reason
+
+    def unflag_video(self, video_id):
+        """Remove flagged status to video_id"""
+        self._flagged.pop(video_id)
