@@ -1,1 +1,0 @@
-# Google's Coding Challenge
